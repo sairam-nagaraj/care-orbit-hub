@@ -1,0 +1,23 @@
+-------------------------------------------------------------------------------
+Test set: com.orbit.care.care_orbit_hub.controller.DoctorControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.018 s <<< FAILURE! -- in com.orbit.care.care_orbit_hub.controller.DoctorControllerIntegrationTest
+com.orbit.care.care_orbit_hub.controller.DoctorControllerIntegrationTest.getDoctorById -- Time elapsed: 0.012 s <<< ERROR!
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.orbit.care.care_orbit_hub.entity.DoctorEntity.appointmentSet: could not initialize proxy - no Session
+	at org.hibernate.collection.spi.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:636)
+	at org.hibernate.collection.spi.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:219)
+	at org.hibernate.collection.spi.AbstractPersistentCollection.initialize(AbstractPersistentCollection.java:615)
+	at org.hibernate.collection.spi.AbstractPersistentCollection.read(AbstractPersistentCollection.java:138)
+	at org.hibernate.collection.spi.PersistentSet.toString(PersistentSet.java:297)
+	at java.base/java.lang.String.valueOf(String.java:4507)
+	at com.orbit.care.care_orbit_hub.entity.DoctorEntity.toString(DoctorEntity.java:20)
+	at java.base/java.lang.String.valueOf(String.java:4507)
+	at java.base/java.lang.StringBuilder.append(StringBuilder.java:173)
+	at java.base/java.util.Optional.toString(Optional.java:457)
+	at com.orbit.care.care_orbit_hub.service.DoctorServiceJpaImpl.getDoctor(DoctorServiceJpaImpl.java:30)
+	at com.orbit.care.care_orbit_hub.controller.DoctorController.getDoctorById(DoctorController.java:34)
+	at com.orbit.care.care_orbit_hub.controller.DoctorControllerIntegrationTest.getDoctorById(DoctorControllerIntegrationTest.java:54)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
