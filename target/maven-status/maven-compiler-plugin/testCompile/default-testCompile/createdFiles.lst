@@ -1,8 +1,0 @@
-com\orbit\care\care_orbit_hub\controller\DoctorControllerIntegrationTest.class
-com\orbit\care\care_orbit_hub\repository\DoctorRepositoryTest.class
-com\orbit\care\care_orbit_hub\repository\SpecializationsRepositoryTest.class
-com\orbit\care\care_orbit_hub\controller\DoctorControllerTest.class
-com\orbit\care\care_orbit_hub\controller\PatientControllerIntegrationTest.class
-com\orbit\care\care_orbit_hub\CareOrbitApplicationTests.class
-com\orbit\care\care_orbit_hub\repository\MedicalAppointmentRepositoryTest.class
-com\orbit\care\care_orbit_hub\controller\PatientControllerTest.class
