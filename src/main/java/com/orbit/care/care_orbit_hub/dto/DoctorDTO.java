@@ -3,6 +3,8 @@ package com.orbit.care.care_orbit_hub.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -18,4 +20,6 @@ public class DoctorDTO {
     private Long cellphone;
 
     private String location;
+
+    private Set<AdditionalProperties> links = new HashSet<>();
 }

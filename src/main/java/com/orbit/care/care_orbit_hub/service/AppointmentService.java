@@ -6,4 +6,6 @@ import java.util.UUID;
 
 public interface AppointmentService {
     UUID createAppointment(AppointmentDTO appointmentDTO);
+
+    AppointmentDTO getAppointment(UUID id);
 }

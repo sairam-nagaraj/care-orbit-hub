@@ -2,6 +2,7 @@ package com.orbit.care.care_orbit_hub.service;
 
 import com.orbit.care.care_orbit_hub.dto.AppointmentDTO;
 import com.orbit.care.care_orbit_hub.entity.MedicalAppointmentEntity;
+import com.orbit.care.care_orbit_hub.exception.NotFoundException;
 import com.orbit.care.care_orbit_hub.mapper.AppointmentsMapper;
 import com.orbit.care.care_orbit_hub.repository.DoctorRepository;
 import com.orbit.care.care_orbit_hub.repository.MedicalAppointmentRepository;
@@ -30,7 +31,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public UUID createAppointment(AppointmentDTO appointmentDTO) {
-        log.debug("What the heck");
+        log.debug("Creating new appointment - Service");
         MedicalAppointmentEntity medicalAppointmentEntity = appointmentsMapper.mapAppointmentDtoToMedicalAppointmentEntity(appointmentDTO);
         System.out.println(patientRepository.findById(appointmentDTO.getPatientId()).get());
         medicalAppointmentEntity.setPatientEntity(patientRepository.findById(appointmentDTO.getPatientId()).get());
@@ -38,5 +39,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         medicalAppointmentEntity.setDoctorEntity(doctorRepository.findById(appointmentDTO.getDoctorId()).get());
         medicalAppointmentEntity.setRecordEntity(null);
         return medicalAppointmentRepository.save(medicalAppointmentEntity).getId();
+    }
+
+    @Override
+    public AppointmentDTO getAppointment(UUID id) {
+        log.debug("Getting appointment by id - Service " + id);
+        return appointmentsMapper.mapAppointmentEntityToAppointmentDTO(medicalAppointmentRepository.findById(id).orElseThrow(NotFoundException::new));
     }
 }

@@ -1,5 +1,6 @@
 package com.orbit.care.care_orbit_hub.controller;
 
+import com.orbit.care.care_orbit_hub.dto.AppointmentDTO;
 import com.orbit.care.care_orbit_hub.dto.PatientDTO;
 import com.orbit.care.care_orbit_hub.service.PatientService;
 import jakarta.validation.constraints.Max;
@@ -26,6 +27,7 @@ public class PatientController {
 
     public static final String baseUriPath = "/v1/patients";
     public static final String uriPathWithId = baseUriPath +"/{patientId}";
+    public static final String appointmentsUriPath = baseUriPath +"/{patientId}/appointments";
     public static final String defaultPageSize = "25";
     public static final String defaultPageNumber = "0";
 
@@ -33,6 +35,7 @@ public class PatientController {
 
     private final PatientService patientService;
 
+    // public PagedModel<EntityModel<PatientDTO>>
     @GetMapping(baseUriPath)
     public PagedModel<EntityModel<PatientDTO>> listAllPatients(@RequestParam(required = false, defaultValue = "") String name,
                                                               @RequestParam(required = false, defaultValue = "") String idNumber,
@@ -47,6 +50,12 @@ public class PatientController {
     public PatientDTO getPatientById(@PathVariable(name= "patientId") UUID id){
         log.debug("Patient Controller called - list patient with id " +id);
         return patientService.getPatient(id);
+    }
+
+    @GetMapping(appointmentsUriPath)
+    public List<AppointmentDTO> getPatientsAppointments(@PathVariable(name= "patientId") UUID id){
+        log.debug("Patient Controller called - list appointments for patient with id " +id);
+        return patientService.getPatientAppointments(id);
     }
 
     @PostMapping(baseUriPath)

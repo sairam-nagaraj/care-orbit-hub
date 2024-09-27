@@ -35,5 +35,7 @@ public class PatientDTO {
     @Valid
     private AddressDTO address;
 
-    private Set<AppointmentDTO> appointmentSet;
+    /*private Set<AppointmentDTO> appointmentSet;*/
+
+    private Set<AdditionalProperties> links = new HashSet<>();
 }

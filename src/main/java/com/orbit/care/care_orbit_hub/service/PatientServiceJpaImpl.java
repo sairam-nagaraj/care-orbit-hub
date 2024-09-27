@@ -1,8 +1,12 @@
 package com.orbit.care.care_orbit_hub.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orbit.care.care_orbit_hub.dto.AppointmentDTO;
 import com.orbit.care.care_orbit_hub.dto.PatientDTO;
 import com.orbit.care.care_orbit_hub.entity.PatientEntity;
 import com.orbit.care.care_orbit_hub.exception.NotFoundException;
+import com.orbit.care.care_orbit_hub.mapper.AppointmentsMapper;
 import com.orbit.care.care_orbit_hub.mapper.PatientsMapper;
 import com.orbit.care.care_orbit_hub.repository.PatientRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +31,8 @@ public class PatientServiceJpaImpl implements PatientService {
     private final PatientRepository patientRepository;
 
     private final PatientsMapper patientsMapper;
+
+    private final AppointmentsMapper appointmentsMapper;
 
 
     @Override
@@ -81,6 +87,14 @@ public class PatientServiceJpaImpl implements PatientService {
     @Override
     public void patchPatient(UUID id, PatientDTO patient) {
 
+    }
+
+    @Override
+    public List<AppointmentDTO> getPatientAppointments(UUID id) {
+        log.debug("Inside listPatientsAppointments " +id);
+        PatientEntity pe = patientRepository.findById(id).orElseThrow(NotFoundException::new);
+        List<AppointmentDTO> result = pe.getAppointmentSet().stream().map(appointmentsMapper::mapAppointmentEntityToAppointmentDTO).collect(Collectors.toList());
+        return result;
     }
 
     private Page<PatientEntity> listPatientsByName(String name, String idNumber, String city, Pageable pageable) {

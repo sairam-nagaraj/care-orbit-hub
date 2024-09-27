@@ -1,5 +1,6 @@
 package com.orbit.care.care_orbit_hub.service;
 
+import com.orbit.care.care_orbit_hub.dto.AppointmentDTO;
 import com.orbit.care.care_orbit_hub.dto.PatientDTO;
 import org.springframework.data.domain.Page;
 
@@ -19,4 +20,6 @@ public interface PatientService {
     void deletePatient(UUID id);
 
     void patchPatient(UUID id, PatientDTO patient);
+
+    List<AppointmentDTO> getPatientAppointments(UUID id);
 }

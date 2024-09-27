@@ -33,11 +33,11 @@ public class AppointmentController {
 
     private final AppointmentService appointmentService;
 
-   /* @GetMapping(uriPathWithId)
-    public PatientDTO getPatientById(@PathVariable(name= "patientId") UUID id){
-        log.debug("Patient Controller called - list patient with id " +id);
-        return patientService.getPatient(id);
-    }*/
+   @GetMapping(uriPathWithId)
+    public AppointmentDTO getAppointmentById(@PathVariable(name= "appointmentId") UUID id){
+        log.debug("Appointment Controller called - list appointments with id " +id);
+        return appointmentService.getAppointment(id);
+    }
 
     @PostMapping(baseUriPath)
     public ResponseEntity createAppointment(@Validated @RequestBody AppointmentDTO appointmentDTO){

@@ -1,5 +1,6 @@
 package com.orbit.care.care_orbit_hub.service;
 
+import com.orbit.care.care_orbit_hub.dto.AppointmentDTO;
 import com.orbit.care.care_orbit_hub.enums.IdentityType;
 import com.orbit.care.care_orbit_hub.dto.PatientDTO;
 import com.orbit.care.care_orbit_hub.exception.NotFoundException;
@@ -100,5 +101,10 @@ public class PatientServiceImpl implements PatientService {
             }
             return patientItem;
         }).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AppointmentDTO> getPatientAppointments(UUID id) {
+        return null;
     }
 }

@@ -11,6 +11,8 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -32,4 +34,6 @@ public class AppointmentDTO {
     private UUID doctorId;
 
     private UUID patientId;
+
+    private Set<AdditionalProperties> links = new HashSet<>();
 }
